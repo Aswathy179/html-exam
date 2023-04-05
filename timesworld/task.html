@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            nav{
+                height: 70px;
+                background: #000;
+                z-index: 9999;
+            }
+            nav .main{
+                margin: 0 auto;
+                max-width: 1100px;
+            }
+            nav .box{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px 0 50px;
+            }
+            nav .title{
+                font-size: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform:translate(-50%,-50%);
+            }
+            nav .logo{
+                float: left;
+                margin-left: 20px;
+                margin-top: 15px;
+                padding: 10px;
+                border: 0px;
+                font-size: 12px;
+            }
+            nav .logo ul li a{
+                text-decoration: none;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 400;
+                transition: all 400ms;
+                letter-spacing: 0px;
+            }
+            nav .logo ul li a:hover{
+                background-color: #db407c;
+                color: #fff;
+                padding: 10px;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                font-weight: 500;
+            }
+            nav .menu ul{
+                display: flex;
+                list-style-type: none;
+                float: right;
+                margin-top: 15px;
+                margin-right: 20px;
+                font-size: 12px;
+            }
+            nav .menu ul li{
+                list-style: none;
+                margin: 0 20px;
+            }
+            nav .menu ul li a{
+                text-decoration: none;
+                color: #fff;
+                font-size: 12px;
+                font-weight: 400;
+                transition: all 400ms;
+                letter-spacing: 0px;
+            }
+            nav .menu ul li a:hover{
+                background-color: #db407c;
+                color: #fff;
+                padding: 10px;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                font-weight: 500;
+            }
+            label i{
+                color: #fff;
+                font-size: 25px;
+            }
+            #checking{
+                display: none;
+            }
+            label{
+                display: none;
+            }
+            nav .menu ul li.active a{
+                background-color: #db407c;
+                color: #fff;
+            }
+            .header{
+                align-content: center;
+                padding: 10px;
+                background: #fff;
+            }
+            .header .headlogo h1{
+                text-align: center;
+            }
+            .hr-lines{
+            position: relative;
+            max-width: 100%;
+            margin: 10px auto;
+            text-align: center;
+            }
+            .hr-lines:before{
+            content:" ";
+            height: 4px;
+            width: 465px;
+            background: rgb(107, 107, 107);
+            display: block;
+            position: absolute;
+            top: 5%;
+            left: 0;
+            }
+            .hr-lines:after{
+            content:" ";
+            height: 4px;
+            width: 465px;
+            background: rgb(107, 107, 107);
+            display: block;
+            position: absolute;
+            top: 85%;
+            right: 0;
+            }
+            .row {
+            display: -ms-flexbox; 
+            display: flex;
+            -ms-flex-wrap: wrap; 
+            flex-wrap: wrap;
+            padding: 0 4px;
+            }
+            .column {
+            -ms-flex: 25%; 
+            flex: 25%;
+            max-width: 50%;
+            padding: 0 4px;
+            }
+            .column:first-child {
+            order: 2;
+            }
+            .column:last-child {
+            order: 1;
+            }
+            .column .featuredImage{
+            margin-top: -5px;
+            vertical-align: middle;
+            width: 100%;
+            padding: 5px 5px 5px 5px;
+            margin-left: -5px;
+            }
+            .slideimg {
+                display: none;
+                
+            }
+            img {
+                vertical-align: middle;
+            }
+            .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            }
+            .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: 27px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            }
+            .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            left: 483px;
+            }
+            .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+            }
+            .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+            }
+            @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+            }
+            .container{
+                margin-top: 10px;
+                background-color: #990750;
+            }
+            .container {
+            background-color: #990750;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+            .row-sm {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+            }
+            .col-sm {
+            padding: 0 4px;
+            }
+            p{
+                text-align: center;
+                color: #f3e7f5;
+                font-size: medium;
+                
+            }
+            footer{
+                margin-top: 5px;
+                height: 50px;
+                background: #000;
+            }
+            footer .footlogo{
+                float: left;
+                margin-left: 20px;
+                margin-top: 15px;
+                border: 0px;
+                font-size: 20px;
+            }
+            footer .footlogo h1{
+                text-decoration: none;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                position: relative;
+            }
+
+            @media screen and (max-width: 830px){
+                nav .menu ul{
+                    position: fixed;
+                    top: 50px;
+                    left: -100%;
+                    background: #fa98bd;
+                    height: 100%;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    z-index: 9999;
+                }
+                nav .menu ul li{
+                    margin: 30px 0;
+                }
+                nav .menu ul li a{
+                    font-size: 20px;
+                }
+                nav .menu ul li a:hover{
+                    padding: 10px;
+                    background: #e92365;
+                    color: #f3e7f5;
+                    border: unset;
+                    outline: unset;
+                    border-radius: 20px;
+                    font-weight: unset;
+                }
+                label{
+                    display: block;
+                }
+                #checking:checked ~ ul{
+                    left: 0%;
+                }
+                #checking:checked ~ label i::before{
+                    content: '\f00d';
+                }
+                .header{
+                    
+                    align-content: center;
+                    padding: 10px;
+                    background: #fff;
+                }
+                .header .headlogo h1{
+                    padding: 5px;
+                    text-align: center;
+                }
+                .hr-lines{
+                    position: relative;
+                    max-width: 100%;
+                    margin: 10px auto;
+                    text-align: center;
+                }
+                .hr-lines:before{
+                    content:" ";
+                    height: 4px;
+                    width: 100%;
+                    background: rgb(107, 107, 107);
+                    display: block;
+                    position: absolute;
+                    top: 5%;
+                    left: 0;
+                }
+                .hr-lines:after{
+                    content:" ";
+                    height: 4px;
+                    width: 100%;
+                    background: rgb(107, 107, 107);
+                    display: block;
+                    position: absolute;
+                    top: 85%;
+                    right: 0;
+                } 
+                .column {
+                    -ms-flex: 50%;
+                    flex: 50%;
+                    max-width: 50%;
+                } 
+                .featuredImage{
+                    margin-right: 100px;
+                }
+                .column:first-child {
+                    order: 1;
+                }
+                .column:last-child {
+                    order: 2;
+                }
+                .col-sm {
+                    flex-basis: 50%;
+                    padding: 0;
+                }
+                .prev {
+                    position: absolute;
+                    top: 57%;
+                    left: 35px;
+                }
+                .next {
+                    right: 213px;
+                    border-radius: 3px 0 0 3px;
+                    position: absolute;
+                    top: 57%;
+                    left: 338px;
+                }
+                .prev:hover, .next:hover {
+                    background-color: rgba(0,0,0,0.8);
+                }
+                .prev, .next {
+                    cursor: pointer;
+                    width: auto;
+                    padding: 16px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 18px;
+                    transition: 0.6s ease;
+                    user-select: none;
+                }
+                .fade {
+                    animation-name: fade;
+                    animation-duration: 1.5s;
+                }
+                @keyframes fade {
+                    from {opacity: .4} 
+                    to {opacity: 1}
+                }
+            }
+            @media screen and (max-width: 600px) {
+                .column {
+                    -ms-flex: 100%;
+                    flex: 100%;
+                    max-width: 100%;
+                }
+            } 
+
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>task</title>
+        <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+    </head>
+    <body onload="load()">
+        <!-- NAVBAR -->
+        <nav>
+            <div class="main">
+                <div class="box">
+                    <div class="logo">
+                        <ul>
+                            <li><a href="#">LOGO</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="menu">
+                        <input type="checkbox" id="checking">
+                        <label for="checking">
+                            <i class="fa fa-bars" style="font-size: 30px; color:#fff; align-content: center" ></i>
+                        </label>
+                        <ul>
+                            <li><a href="#">NAV 1</a></li>
+                            <li><a href="#">NAV 2</a></li>
+                            <li><a href="#">NAV 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="headlogo">
+                <h1 class="hr-lines">HEADER</h1>
+            </div>
+        </header>
+        <!-- IMAGE -->
+        <div class="row">
+            <div class="column">
+                <img class="featuredImage" src="./../image/n71.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <div class="slider" >
+                    <div class="slideimg fade">
+                        <img src="./../image/n11.jpg" style="width:100%">
+                    </div>
+                  
+                    <div class="slideimg fade">
+                        <img src="./../image/n21.jpg" style="width:100%">
+                    </div>
+                  
+                    <div class="slideimg fade">
+                        <img src="./../image/n31.jpg" style="width:100%">
+                    </div>
+                  
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+            </div>
+        </div>
+         <!-- COUNTER -->
+        <p>
+            <div class="container">
+               <div class="row-sm">
+                    <div class="col-sm">
+                        <p id='0101' class="fs-2 text-light">1234</p>
+                        <p class="text-light">ANY TEXT</p>
+                    </div>
+                    <div class="col-sm">
+                        <p id='0102' class="fs-2 text-light">567</p>
+                        <p class="text-light">ANY TEXT</p>
+                    </div>
+                    <div class="col-sm">
+                        <p id='0103' class="fs-2 text-light">765</p>
+                        <p class="text-light">ANY TEXT</p>
+                    </div>
+                    <div class="col-sm">
+                        <p id='0104' class="fs-2 text-light">567</p>
+                        <p class="text-light">ANY TEXT</p>
+                    </div>
+                    <div class="col-sm">
+                        <p id='0105' class="fs-2 text-light">765</p>
+                        <p class="text-light">ANY TEXT</p>
+                    </div>
+               </div>
+            </div>
+        </p>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footlogo">
+                <h1>FOOTER</h1>
+            </div>
+        </footer>
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+            
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+            
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+              let i;
+              let slides = document.getElementsByClassName("slideimg");
+              if (n > slides.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+            
+              slides[slideIndex-1].style.display = "block";  
+            }
+
+            function animate(obj, initVal, lastVal, duration) {
+                let startTime = null;
+                let currentTime = Date.now();
+                const step = (currentTime ) => {
+                    if (!startTime) {
+                        startTime = currentTime ;
+                    }
+                    const progress = Math.min((currentTime - startTime)/ duration, 1);
+                    obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } 
+                    else {
+                        window.cancelAnimationFrame(window.requestAnimationFrame(step));
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }     
+            let text1 = document.getElementById('0101');
+            let text2 = document.getElementById('0102');
+            let text3 = document.getElementById('0103');
+            let text4 = document.getElementById('0104');
+            let text5 = document.getElementById('0105');
+            const load = () => {
+                animate(text1, 0, 1234, 7000);
+                animate(text2, 0, 567, 7000);
+                animate(text3, 0, 765, 7000);
+                animate(text4, 0, 567, 7000);
+                animate(text5, 0, 765, 7000);
+            }
+        </script>
+
+    </body>
+</html>
